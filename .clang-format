@@ -1,0 +1,51 @@
+# 以 ikcp.h 的风格为准：制表符、Allman 大括号、保持行宽/注释/宏
+BasedOnStyle: LLVM
+Language: Cpp
+
+# 缩进与制表符
+UseTab: Always          # 使用制表符；ikcp.h 中普遍以 \t 缩进
+TabWidth: 4
+IndentWidth: 4
+ContinuationIndentWidth: 4
+
+# 括号与指针
+BreakBeforeBraces: Custom   # 使用自定义换行策略
+BraceWrapping:
+  AfterFunction: true            # 函数定义的 { 换行
+  AfterClass: false
+  AfterControlStatement: false   # if/for/while 的 { 不换行
+  AfterNamespace: false
+  AfterStruct: false
+  AfterUnion: false
+  BeforeElse: false
+  BeforeCatch: false
+  IndentBraces: false
+
+PointerAlignment: Right     # 指针写作 "type *name"，与声明一致（如 ikcp_update 原型） :contentReference[oaicite:1]{index=1}
+DerivePointerAlignment: false
+
+# 空格/括号
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpaceAfterCStyleCast: false
+
+# 行宽与换行
+ColumnLimit: 0              # 不强制换行，避免动现有注释/对齐
+KeepLineBreaks: true
+ReflowComments: false       # 不重排 // 注释的换行与对齐（头文件中大量手工对齐的注释） :contentReference[oaicite:2]{index=2}
+MaxEmptyLinesToKeep: 2
+
+# 预处理指令与包含
+IndentPPDirectives: None    # 不调整 #define/#if 的缩进/对齐（保留现状）
+SortIncludes: false         # 不排序 include，避免无谓 diff
+
+# 对齐（全部关闭，以免把用 \t 对齐的宏/注释改成空格）
+AlignConsecutiveMacros: false
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignTrailingComments: false
+
+# 其它安全项
+AllowShortIfStatementsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: Empty
+AllowShortLoopsOnASingleLine: false
